@@ -13,16 +13,17 @@ export default Route.extend({
         dataType: 'json',
         success(data) {
           console.log('Dữ liệu nhận được: - posts.js:15', data);
-          //setTimeout(() => resolve(data), 1000);
+          setTimeout(() => resolve(data), 1000);
           // Giả lập lỗi ngẫu nhiên 30%
-          if (Math.random() < 0.3) {
-            reject('Lỗi ngẫu nhiên khi tải danh sách!');
-          } else {
-            setTimeout(() => resolve(data), 1000);
-          }
+          // Uncomment mấy dòng code dưới
+          // if (Math.random() < 0.3) {
+          //   reject('Lỗi ngẫu nhiên khi tải danh sách!');
+          // } else {
+          //   setTimeout(() => resolve(data), 1000);
+          // }
         },
         error(err) {
-          console.error('Không nhận được dữ liệu - posts.js:25');
+          console.error('Không nhận được dữ liệu - posts.js:26');
           reject(err);
         }
       });
