@@ -5,6 +5,19 @@ import $ from 'jquery';
 
 export default Route.extend({
   model() {
+
+    const config = this.sessionConfig;
+
+    console.log(`Cấu hình Session đang dùng: - application.js:11`, config);
+    console.log(`Thời gian Timeout (từ config): ${config.timeout} giây - application.js:12`);
+
+    // Ví dụ về logic:
+    // Nếu ứng dụng đang chạy trong môi trường phát triển, hãy thiết lập timeout ngắn hơn
+    if (config.appName === 'EmberEnterpriseSearch') {
+      console.log(`Cấu hình AppName đang dùng: - application.js:17`, config.appName);
+      // ... thực hiện logic
+    }
+
     // Return a Promise so Ember waits for it
     return new Promise((resolve, reject) => {
       // Show spinner
@@ -18,7 +31,7 @@ export default Route.extend({
           setTimeout(() => resolve(data), 2000); // resolve(data);
         },
         error(jqXHR, textStatus, errorThrown) {
-          console.error('AJAX error: - application.js:21', textStatus, errorThrown);
+          console.error('AJAX error: - application.js:34', textStatus, errorThrown);
           reject(errorThrown);
         },
         complete() {
@@ -28,24 +41,36 @@ export default Route.extend({
       });
     });
   },
-  afterModel() {
+
+  afterModel(model, transition) {
+
+    console.log(`afterModel > model: - application.js:47`, model);
+    console.log(`afterModel > transition: - application.js:48`, transition);
+
+    if (this.sessionConfig.retryLimit === 0) {
+      console.log(`afterModel > sessionConfig.retryLimit: - application.js:51`, this.sessionConfig.retryLimit);
+      // Logic xử lý khi giới hạn thử lại bằng 0
+      // Ví dụ: Chuyển hướng đến trang lỗi
+      transition.transitionTo('error-page');
+    }
+
     // Run after the template has rendered
     scheduleOnce('afterRender', this, function () {
       if ($ && $.fn.tooltip) {
         // Initialize Bootstrap tooltip
         $('#tooltipBtn').tooltip();
-        console.log('Tooltip initialized, Bootstrap JS loaded. - application.js:37');
+        console.log('Tooltip initialized, Bootstrap JS loaded. - application.js:62');
       } else {
-        console.log('Bootstrap tooltip not available. - application.js:39');
+        console.log('Bootstrap tooltip not available. - application.js:64');
       }
 
       // Log jQuery and Bootstrap versions
       if ($) {
-        console.log('jQuery version: - application.js:44', $.fn.jquery);
+        console.log('jQuery version: - application.js:69', $.fn.jquery);
       }
 
       if ($ && $.fn.tooltip && $.fn.tooltip.Constructor) {
-        console.log('Bootstrap version: - application.js:48', $.fn.tooltip.Constructor.VERSION);
+        console.log('Bootstrap version: - application.js:73', $.fn.tooltip.Constructor.VERSION);
       }
 
       // Hide context menu on click anywhere
@@ -59,7 +84,7 @@ export default Route.extend({
 
         const field = $(this).data('field');
         const value = $(this).text();
-        console.log(`Rightclicked on ${field}: ${value} - application.js:62`);
+        console.log(`Rightclicked on ${field}: ${value} - application.js:87`);
 
         // Position and show context menu
         $('#contextMenu')
