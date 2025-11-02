@@ -1,68 +1,18 @@
-<div class="container header">
-  <h1>
-    <i class="fa fa-check-circle"></i>
-    Bootstrap + jQuery + Font Awesome
-  </h1>
+<DebugConsole />
 
-  <button id="tooltipBtn" type="button" class="btn btn-primary" data-toggle="tooltip" title="Hello Tooltip!">
-    Hover me for tooltip
-  </button>
-
-  <button id="modalBtn" type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
-    Open Modal
-  </button>
-
-  <h2><i class="fa fa-table"></i> User Table with Context Menu</h2>
-
-  <table class="table table-bordered table-hover" id="userTable">
-    <thead>
-      <tr class="bg-primary text-white">
-        <th>ID</th>
-        <th>Name</th>
-        <th>Role</th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#each this.model as |user|}}
-        <tr>
-          <td class="context-cell" data-field="id">{{user.id}}</td>
-          <td class="context-cell" data-field="name">{{user.name}}</td>
-          <td class="context-cell" data-field="role">{{user.role}}</td>
-        </tr>
-      {{/each}}
-    </tbody>
-  </table>
-
-  {{!-- Custom Context Menu --}}
-  <div id="contextMenu" class="dropdown clearfix ctx-menu">
-    <ul class="dropdown-menu ctx-drd-menu">
-      <li><a href="#" id="editCell"><i class="fa fa-pencil"></i> Edit</a></li>
-      <li><a href="#" id="deleteRow"><i class="fa fa-trash"></i> Delete</a></li>
-    </ul>
+<header class="navbar navbar-default">
+  <div class="container">
+    <h3>📚 Ember Blog</h3>
   </div>
+</header>
 
-  {{!-- Modal --}}
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title" id="modalLabel">Bootstrap Modal</h4>
-        </div>
-        <div class="modal-body">
-          This modal confirms that Bootstrap JS is working with jQuery.
-          <i class="fa fa-smile-o"></i>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
+<main class="container">
+  {{outlet}}
+</main>
 
-  {{!-- Loading Spinner --}}
-  <div id="loadingSpinner" class="text-center loading-spinner">
-    <i class="fa fa-spinner fa-spin fa-3x fa-fw text-primary"></i>
-    <p>Loading data...</p>
-  </div>
-</div>
+{{! Outlet phụ cho modal }}
+{{outlet "modal"}}
+
+<footer class="text-center text-muted footer-spaced">
+  <small>© 2025 Ember Blog Demo</small>
+</footer>

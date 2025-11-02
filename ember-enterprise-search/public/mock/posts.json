@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "title": "Giới thiệu Ember.js",
+    "author": "Admin",
+    "content": "Ember.js là framework front-end mạnh mẽ, tuân thủ triết lý Convention over Configuration."
+  },
+  {
+    "id": 2,
+    "title": "Vì sao nên dùng CoC?",
+    "author": "Nguyễn Văn A",
+    "content": "Convention over Configuration giúp giảm cấu hình, tăng tốc độ phát triển."
+  }
+]

@@ -1,0 +1,16 @@
+<div class="modal show modal-display-block">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" {{action "close"}}>&times;</button>
+        <h4 class="modal-title">Chi tiết bài viết</h4>
+      </div>
+      <div class="modal-body">
+        {{yield}}
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-default" {{action "close"}}>Đóng</button>
+      </div>
+    </div>
+  </div>
+</div>

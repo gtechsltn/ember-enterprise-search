@@ -1,0 +1,22 @@
+<div class="container posts-container">
+  <h2><i class="fa fa-list"></i> Danh sách bài viết</h2>
+
+  {{#if model.length}}
+    <ul class="list-group">
+      {{#each model as |post|}}
+        <li class="list-group-item">
+          <strong>{{post.title}}</strong>
+          <small>— {{post.author}}</small>
+          <button class="btn btn-sm btn-primary pull-right"
+                  {{action "showModal" post}}>
+            <i class="fa fa-eye"></i> Xem chi tiết
+          </button>
+        </li>
+      {{/each}}
+    </ul>
+  {{else}}
+    <div class="empty-posts text-muted">
+      <p>Không có bài viết nào.</p>
+    </div>
+  {{/if}}
+</div>

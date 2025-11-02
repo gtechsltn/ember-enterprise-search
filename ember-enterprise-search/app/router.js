@@ -11,6 +11,8 @@ const Router = EmberRouter.extend({
 console.log('Router: - router.js:11', Router);
 
 Router.map(function () {
+  this.route('posts');
+  this.route('post-modal', { path: '/posts/:post_id/modal' }); // 👈 modal outlet
 });
 
 export default Router;
