@@ -66,3 +66,111 @@ ember-enterprise-search/tests/integration/components/modal-dialog-test.js
 ember-enterprise-search/tests/unit/routes/post-modal-test.js
 ember-enterprise-search/tests/unit/routes/posts-test.js
 ```
+
+# Generate ChatGPT Prompt
+```
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.OutputEncoding = Encoding.UTF8; // Hỗ trợ Unicode
+            Console.InputEncoding = Encoding.UTF8;
+
+            //Console.Write("Nhập đường dẫn đến tệp danh sách (ví dụ: list.txt): ");
+            //string listFile = Console.ReadLine()?.Trim();
+
+            //if (string.IsNullOrEmpty(listFile) || !File.Exists(listFile))
+            //{
+            //    Console.WriteLine("❌ Không tìm thấy tệp danh sách!");
+            //    return;
+            //}
+
+            //string[] filePaths = File.ReadAllLines(listFile);
+            string[] list = new[] {
+                "D:\\gtechsltn\\ember-enterprise-search\\ember-enterprise-search\\app\\app.js",
+                "D:\\gtechsltn\\ember-enterprise-search\\ember-enterprise-search\\app\\router.js",
+                "D:\\gtechsltn\\ember-enterprise-search\\ember-enterprise-search\\app\\routes\\application.js",
+                "D:\\gtechsltn\\ember-enterprise-search\\ember-enterprise-search\\app\\routes\\posts.js",
+                "D:\\gtechsltn\\ember-enterprise-search\\ember-enterprise-search\\app\\routes\\post-modal.js",
+                "D:\\gtechsltn\\ember-enterprise-search\\ember-enterprise-search\\app\\templates\\application.hbs",
+                "D:\\gtechsltn\\ember-enterprise-search\\ember-enterprise-search\\app\\templates\\posts.hbs",
+                "D:\\gtechsltn\\ember-enterprise-search\\ember-enterprise-search\\app\\templates\\post-modal.hbs",
+                "D:\\gtechsltn\\ember-enterprise-search\\ember-enterprise-search\\app\\templates\\loading.hbs",
+                "D:\\gtechsltn\\ember-enterprise-search\\ember-enterprise-search\\app\\templates\\error.hbs",
+                "D:\\gtechsltn\\ember-enterprise-search\\ember-enterprise-search\\app\\templates\\posts\\loading.hbs",
+                "D:\\gtechsltn\\ember-enterprise-search\\ember-enterprise-search\\app\\templates\\posts\\error.hbs",
+                "D:\\gtechsltn\\ember-enterprise-search\\ember-enterprise-search\\app\\templates\\posts\\empty.hbs",
+                "D:\\gtechsltn\\ember-enterprise-search\\ember-enterprise-search\\app\\templates\\post-modal\\error.hbs",
+                "D:\\gtechsltn\\ember-enterprise-search\\ember-enterprise-search\\app\\templates\\post-modal\\loading.hbs",
+                "D:\\gtechsltn\\ember-enterprise-search\\ember-enterprise-search\\app\\initializers\\session-config.js",
+                "D:\\gtechsltn\\ember-enterprise-search\\ember-enterprise-search\\app\\components\\modal-dialog.js",
+                "D:\\gtechsltn\\ember-enterprise-search\\ember-enterprise-search\\app\\templates\\components\\modal-dialog.hbs",
+                "D:\\gtechsltn\\ember-enterprise-search\\ember-enterprise-search\\public\\mock\\posts.json",
+                "D:\\gtechsltn\\ember-enterprise-search\\ember-enterprise-search\\app\\router.js",
+                "D:\\gtechsltn\\ember-enterprise-search\\ember-enterprise-search\\app\\routes\\application.js",
+                "D:\\gtechsltn\\ember-enterprise-search\\ember-enterprise-search\\app\\templates\\application.hbs",
+                "D:\\gtechsltn\\ember-enterprise-search\\ember-enterprise-search\\config\\environment.js",
+                "D:\\gtechsltn\\ember-enterprise-search\\ember-enterprise-search\\app\\components\\debug-console.js",
+                "D:\\gtechsltn\\ember-enterprise-search\\ember-enterprise-search\\app\\components\\modal-dialog.js",
+                "D:\\gtechsltn\\ember-enterprise-search\\ember-enterprise-search\\app\\controllers\\post-modal.js",
+                "D:\\gtechsltn\\ember-enterprise-search\\ember-enterprise-search\\app\\routes\\post-modal.js",
+                "D:\\gtechsltn\\ember-enterprise-search\\ember-enterprise-search\\app\\routes\\posts.js",
+                "D:\\gtechsltn\\ember-enterprise-search\\ember-enterprise-search\\app\\templates\\components\\debug-console.hbs",
+                "D:\\gtechsltn\\ember-enterprise-search\\ember-enterprise-search\\app\\templates\\components\\modal-dialog.hbs",
+                "D:\\gtechsltn\\ember-enterprise-search\\ember-enterprise-search\\app\\templates\\error.hbs",
+                "D:\\gtechsltn\\ember-enterprise-search\\ember-enterprise-search\\app\\templates\\index.hbs",
+                "D:\\gtechsltn\\ember-enterprise-search\\ember-enterprise-search\\app\\templates\\loading.hbs",
+                "D:\\gtechsltn\\ember-enterprise-search\\ember-enterprise-search\\app\\templates\\post-modal.hbs",
+                "D:\\gtechsltn\\ember-enterprise-search\\ember-enterprise-search\\app\\templates\\posts.hbs",
+                "D:\\gtechsltn\\ember-enterprise-search\\ember-enterprise-search\\public\\mock\\posts.json",
+            };
+
+            // Tạo HashSet từ List
+            HashSet<string> filePaths = new HashSet<string>(list);
+            foreach (var item in filePaths)
+            {
+                Console.WriteLine(item);
+            }
+
+            string outputFile = "output.txt";
+
+            File.WriteAllText(outputFile, "", Encoding.UTF8);
+
+            using (StreamWriter writer = new StreamWriter(outputFile, false, Encoding.UTF8))
+            {
+                foreach (string filePath in filePaths)
+                {
+                    string trimmedPath = filePath.Trim();
+                    if (string.IsNullOrEmpty(trimmedPath)) continue;
+
+                    writer.WriteLine($"{Path.GetFileName(trimmedPath)}:");
+
+                    try
+                    {
+                        string content = File.ReadAllText(trimmedPath, Encoding.UTF8);
+                        writer.WriteLine(content);
+                    }
+                    catch (Exception ex)
+                    {
+                        writer.WriteLine($"[Lỗi khi đọc tệp: {ex.Message}]");
+                    }
+
+                    writer.WriteLine();
+                }
+            }
+
+            Console.WriteLine($"✅ Đã ghi toàn bộ kết quả ra tệp: {Path.GetFullPath("output.txt")}");
+
+            Console.Write($"{Environment.NewLine}✅ Đã đọc xong tất cả các tệp. Press any key to exit...");
+            Console.ReadKey();
+        }
+    }
+}
+```
