@@ -1,0 +1,53 @@
+// app/styles/app.scss
+
+// Import your variables first
+@import 'variables';
+
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: Arial, Arial, sans-serif;
+  font-size: 14px;
+}
+
+// Your custom styles can follow
+body {
+  background-color: $body-bg;
+  color: $text-color;
+}
+
+.header {
+  margin-top: 10px;
+}
+
+.loading-spinner {
+  margin: 20px;
+  display: none;
+}
+
+#contextMenu {
+  min-width: 150px;
+
+  ul.dropdown-menu {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  li>a {
+    cursor: pointer;
+  }
+
+  li>a:hover {
+    background-color: #f0f0f0;
+  }
+}
+
+.ctx-menu {
+  position: absolute;
+  display: none;
+  z-index: 1000;
+}
+
+.ctx-drd-menu {
+  display: block;
+  position: static;
+}

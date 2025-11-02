@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Enterprise Search App</title>
+    <meta name="description" content="Enterprise Search App">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {{content-for "head"}}
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link integrity="" rel="stylesheet" href="{{rootURL}}assets/vendor.css">
+    <link integrity="" rel="stylesheet" href="{{rootURL}}assets/ember-enterprise-search.css">
+
+    {{content-for "head-footer"}}
+  </head>
+  <body>
+    {{content-for "body"}}
+
+    <script src="{{rootURL}}assets/vendor.js"></script>
+    <script src="{{rootURL}}assets/ember-enterprise-search.js"></script>
+
+    {{content-for "body-footer"}}
+    <script>
+      if (window.jQuery) {
+        console.log("jQuery version:", jQuery.fn.jquery);
+        if (window.jQuery && $.fn.tooltip && $.fn.tooltip.Constructor) {
+          console.log("Bootstrap version:", $.fn.tooltip.Constructor.VERSION);
+        } else {
+          console.log("Bootstrap is not detected or not loaded yet.");
+        }
+      } else {
+        console.log("jQuery is not detected or not loaded yet.");
+      }
+    </script>
+  </body>
+</html>

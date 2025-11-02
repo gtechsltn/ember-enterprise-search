@@ -1,0 +1,34 @@
+// _variables.scss
+
+// Colors
+$brand-primary: #007bff; // Primary color
+$brand-success: #28a745; // Success color
+$brand-info: #17a2b8; // Info color
+$brand-warning: #ffc107; // Warning color
+$brand-danger: #dc3545; // Danger color
+
+// Body and text
+$body-bg: #f8f9fa; // Body background
+$text-color: #212529; // Default text color
+
+// Fonts
+$font-family-base: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-size-base: 14px;
+$line-height-base: 1.42857143;
+
+// Buttons
+$btn-primary-bg: $brand-primary;
+$btn-primary-border: darken($btn-primary-bg, 10%);
+$btn-success-bg: $brand-success;
+
+// Navbar
+$navbar-default-bg: #ffffff;
+$navbar-default-color: #333333;
+
+// Spacing
+$spacer: 15px;
+$spacer-half: $spacer / 2;
+
+// Example for custom usage
+$custom-card-bg: #ffffff;
+$custom-card-border: #dddddd;
